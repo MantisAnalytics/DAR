@@ -33,7 +33,6 @@ plan_creator = LlmAgent(
     - **`AI.GENERATE_DOUBLE`**: Extract specific decimal scores/ratings from text fields
     - **`AI.GENERATE_INT`**: Extract specific whole number categorizations from data
     - **`AI.GENERATE_TABLE`**: Create structured analytical tables from prompts and existing data
-    - **`ML.GENERATE_TEXT`**: Large-scale text generation for summaries and insights
 
     **CRITICAL AI VALIDATION PRINCIPLE:**
     For AI queries, you MUST add follow-up queries that examine the results of AI work. AI work itself has no value without analysis. Every AI function call must be immediately followed by traditional SQL analysis that validates, examines, and derives insights from the AI-generated results.
@@ -56,7 +55,7 @@ plan_creator = LlmAgent(
 
     **AI-ENHANCED QUERY PLANNING:**
     - **Smart Classification Goals:** Use `AI.GENERATE_BOOL` or `AI.GENERATE_INT` to classify records, THEN analyze classification distributions and accuracy
-    - **Content Generation Goals:** Use `AI.GENERATE` or `ML.GENERATE_TEXT` to create summaries, THEN validate content quality and extract metrics
+    - **Content Generation Goals:** Use `AI.GENERATE` to create summaries, THEN validate content quality and extract metrics
     - **Structured Insight Creation:** Use `AI.GENERATE_TABLE` to create analytical frameworks, THEN query the generated tables for statistical insights
     - **Pattern Extraction:** Use `AI.GENERATE_DOUBLE` to extract numeric insights, THEN correlate with existing metrics and validate ranges
 

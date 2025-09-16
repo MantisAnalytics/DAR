@@ -26,7 +26,6 @@ query_understanding_agent = LlmAgent(
         Look for plan steps that mention:
         - Classification, sentiment, categorization → AI.GENERATE_BOOL/INT + distribution analysis
         - Scoring, rating, ranking → AI.GENERATE_DOUBLE/INT + statistical correlation  
-        - Summarization, insights → ML.GENERATE_TEXT + content quality metrics
         - Structured analysis → AI.GENERATE_TABLE + result querying
         - Content generation → AI.GENERATE + validation against source data
     

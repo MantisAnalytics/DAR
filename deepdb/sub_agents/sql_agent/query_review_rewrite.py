@@ -13,7 +13,7 @@ query_review_rewrite_agent = LlmAgent(
     **INPUT:**
     - Query understanding: {query_understanding_output}
     - Generated query: {query_generation_output}
-    - Project: {PROJECT}, Dataset: {BQ_DATASET}, Location: {BQ_LOCATION}
+    - Project: {PROJECT}, Dataset: {BQ_DATASET}, Location: {BQ_LOCATION}, BQ Model {BQ_MODEL}
     - Use `bigquery_toolset` for table metadata
 
     **REVIEW CHECKLIST:**
@@ -24,7 +24,6 @@ query_review_rewrite_agent = LlmAgent(
     - Convert datetime to string: FORMAT_DATETIME('%Y-%m-%d', date_column)
     - Add NULL checks for AI function inputs
     - Maintain AI + validation pattern (AI results must be analyzed statistically)
-    - Always use 'gemini-2.0-flash' in AI functions
 
     **OUTPUT:**
     Return only the corrected SQL query as text.

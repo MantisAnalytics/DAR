@@ -26,7 +26,6 @@ query_generation_agent = LlmAgent(
     Note: These functions do NOT require creating remote models first - they use direct connections to Vertex AI.
 
     **Available AI Functions:**
-    - **ML.GENERATE_TEXT**: Text generation using remote models (requires creating remote model first)
     - **AI.GENERATE**: Direct text generation using connection (no remote model needed)
     - **AI.GENERATE_BOOL**: Direct boolean classification using connection
     - **AI.GENERATE_TABLE**: Direct structured data generation using connection
@@ -45,7 +44,7 @@ query_generation_agent = LlmAgent(
             AI.GENERATE_BOOL(
                 ('Is this customer review positive?', review_text),
                 connection_id => '{BQ_CONNECTION_ID}',
-                endpoint => 'gemini-2.0-flash'
+                endpoint => '{BQ_MODEL}'
             ).result as ai_sentiment
         FROM `{PROJECT}.{BQ_DATASET}.table_name`
         WHERE review_text IS NOT NULL
@@ -88,7 +87,7 @@ query_generation_agent = LlmAgent(
             CAST(AI.GENERATE(
                 ('Rate the urgency of this support ticket from 1-5 (respond with just the number): ', description),
                 connection_id => '{BQ_CONNECTION_ID}',
-                endpoint => 'gemini-2.0-flash'
+                endpoint => '{BQ_MODEL}'
             ).result AS INT64) as ai_urgency_score
         FROM `{PROJECT}.{BQ_DATASET}.table_name`
         WHERE description IS NOT NULL
@@ -133,7 +132,7 @@ query_generation_agent = LlmAgent(
             AI.GENERATE(
                 ('Categorize this product into one of: Electronics, Clothing, Books, Home, Sports. Product: ', product_name),
                 connection_id => '{BQ_CONNECTION_ID}',
-                endpoint => 'gemini-2.0-flash'
+                endpoint => '{BQ_MODEL}'
             ).result as ai_category
         FROM `{PROJECT}.{BQ_DATASET}.products`
         WHERE product_name IS NOT NULL
@@ -181,7 +180,7 @@ query_generation_agent = LlmAgent(
             AI.GENERATE(
                 ('Analyze these support ticket descriptions and identify the top 3 most common issues in 100 words or less: ', sample_descriptions),
                 connection_id => '{BQ_CONNECTION_ID}',
-                endpoint => 'gemini-2.0-flash'
+                endpoint => '{BQ_MODEL}'
             ).result as ai_analysis
         FROM (
             SELECT 
@@ -239,7 +238,7 @@ query_generation_agent = LlmAgent(
             AI.GENERATE(
                 ('Based on this customer profile, predict their likelihood to churn (High/Medium/Low) and explain why: Segment=' || customer_segment || ', Orders=' || CAST(total_orders AS STRING) || ', Revenue=' || CAST(total_revenue AS STRING) || ', Categories=' || top_categories),
                 connection_id => '{BQ_CONNECTION_ID}',
-                endpoint => 'gemini-2.0-flash'
+                endpoint => '{BQ_MODEL}'
             ).result as churn_prediction
         FROM base_metrics
     ),

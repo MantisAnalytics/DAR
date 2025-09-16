@@ -30,6 +30,7 @@ class Config:
   # Model Configuration
   critic_model: str = field(default="gemini-2.5-pro")
   worker_model: str = field(default="gemini-2.5-flash")
+  bq_model: str = field(default="gemini-2.5-flash")
   max_feedback_iterations: int = field(default=2)
 
   def __post_init__(self):
@@ -127,6 +128,7 @@ class Config:
     # Model configuration
     self.critic_model = os.getenv("CRITIC_MODEL", os.getenv("ROOT_AGENT_MODEL", "gemini-2.5-pro"))
     self.worker_model = os.getenv("WORKER_MODEL", os.getenv("ROOT_AGENT_MODEL", "gemini-2.5-flash"))
+    self.bq_model = os.getenv("BQ_MODEL", "gemini-2.5-flash")
 
     # Convert max_feedback_iterations to int with error handling
     try:
@@ -150,6 +152,7 @@ class Config:
       callback_context.state["BQ_LOCATION"] = self.location
       callback_context.state["BQ_DATASET"] = self.dataset
       callback_context.state["BQ_CONNECTION_ID"] = self.connection_id
+      callback_context.state["BQ_MODEL"] = self.bq_model
 
       logger.info("Successfully initialized state variables")
     except Exception as e:
