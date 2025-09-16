@@ -11,6 +11,8 @@ credentials_config = BigQueryCredentialsConfig(
     credentials=application_default_credentials
 )
 
-bigquery_toolset = BigQueryToolset(
-    credentials_config=credentials_config, bigquery_tool_config=tool_config
+bigquery_toolset = BigQueryToolset(credentials_config=credentials_config, bigquery_tool_config=tool_config)
+bigquery_readonly_toolset = BigQueryToolset(
+    credentials_config=credentials_config,
+    tool_filter=['list_dataset_ids', 'get_dataset_info', 'list_table_ids', 'get_table_info']
 )
