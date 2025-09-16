@@ -43,6 +43,19 @@ class EscalationChecker(BaseAgent):
             yield Event(author=self.name)
 
 
+# sql_agent = SequentialAgent(
+#     name="sql_agent",
+#     description="An orchestrator agent that coordinates the nl2sql workflow by delegating tasks to specialized "
+#                 "sub-agents.",
+#     sub_agents=[
+#         query_understanding_agent,
+#         query_generation_agent,
+#         query_review_rewrite_agent,
+#         query_execution_agent,
+#     ],
+# )
+
+
 sql_agent = SequentialAgent(
     name="sql_agent",
     description="An orchestrator agent that coordinates the nl2sql workflow by delegating tasks to specialized "
@@ -50,10 +63,19 @@ sql_agent = SequentialAgent(
     sub_agents=[
         query_understanding_agent,
         query_generation_agent,
-        query_review_rewrite_agent,
-        query_execution_agent,
+        LoopAgent(
+            name="query_refinement_loop",
+            sub_agents=[
+                query_execution_agent,
+                query_review_rewrite_agent,
+            ],
+            max_iterations=3
+        )
     ],
 )
+
+
+
 
 report_composer = LlmAgent(
     model=CONFIG.critic_model,
