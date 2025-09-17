@@ -23,5 +23,5 @@ RUN uv sync --frozen
 # Expose the port
 EXPOSE 8000
 
-CMD ["uv", "adk", "web", "--host", "0.0.0.0"]
+CMD ["uv", "run", "adk", "web", "--host", "0.0.0.0"]
 
