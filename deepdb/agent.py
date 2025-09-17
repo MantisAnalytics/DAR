@@ -4,9 +4,7 @@ from collections.abc import AsyncGenerator
 from google.adk.agents import BaseAgent, LlmAgent, LoopAgent, SequentialAgent
 from google.adk.agents.invocation_context import InvocationContext
 from google.adk.events import Event, EventActions
-from google.adk.planners import BuiltInPlanner
 from google.adk.tools.agent_tool import AgentTool
-from google.genai import types as genai_types
 
 from deepdb.sub_agents.research_agent.initial_research import initial_research_agent
 from deepdb.sub_agents.research_agent.plan_creator import plan_creator
@@ -42,20 +40,6 @@ class EscalationChecker(BaseAgent):
             # Yielding an event without content or actions just lets the flow continue.
             yield Event(author=self.name)
 
-
-# sql_agent = SequentialAgent(
-#     name="sql_agent",
-#     description="An orchestrator agent that coordinates the nl2sql workflow by delegating tasks to specialized "
-#                 "sub-agents.",
-#     sub_agents=[
-#         query_understanding_agent,
-#         query_generation_agent,
-#         query_review_rewrite_agent,
-#         query_execution_agent,
-#     ],
-# )
-
-
 sql_agent = SequentialAgent(
     name="sql_agent",
     description="An orchestrator agent that coordinates the nl2sql workflow by delegating tasks to specialized "
@@ -73,9 +57,6 @@ sql_agent = SequentialAgent(
         )
     ],
 )
-
-
-
 
 report_composer = LlmAgent(
     model=CONFIG.critic_model,
