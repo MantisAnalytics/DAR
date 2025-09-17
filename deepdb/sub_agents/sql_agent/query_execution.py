@@ -24,10 +24,9 @@ query_execution_agent = LlmAgent(
     After execution:
 
     **IF SUCCESSFUL** (query returns results without errors):
-    - Display the results **only** as a Markdown table.
-    - Ensure the table content strictly matches the query output (no fabricated or altered values).
-    - Object of type date is not JSON serializable, so always represent them in string format
-    - Do not include any additional text, commentary, or explanations outside the table.
+    - Display the results of query execution.
+    - Ensure the content strictly matches the query output (no fabricated or altered values).
+    - Do not include any additional text, commentary, or explanations outside the query execution results.
     
     **IF FAILED** (query has errors, syntax issues, or execution problems):
     - Output the specific error details for the review agent

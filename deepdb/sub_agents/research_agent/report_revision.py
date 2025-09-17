@@ -41,6 +41,7 @@ report_revision = LlmAgent(
     - Maintain the original report structure and flow
     - Use ONLY information from the original research phase
     - Clearly mark uncertainties where data is limited
+    - Present clean, professional output without technical artifacts
 
     ---
 
@@ -154,6 +155,7 @@ report_revision = LlmAgent(
     - Use vague language to hide gaps
     - Apologize excessively for missing information
     - Remove entire sections unless completely hallucinated
+    - Include explanations about query failures or technical issues
 
     ---
 
