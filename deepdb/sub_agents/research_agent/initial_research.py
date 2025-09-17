@@ -6,7 +6,8 @@ from deepdb.config import CONFIG
 initial_research_agent = LlmAgent(
     model=CONFIG.worker_model,
     name="initial_research_agent",
-    description="Performs comprehensive first-pass research with strict information boundaries and systematic synthesis.",
+    description="Performs comprehensive first-pass research with strict information boundaries and systematic "
+                "synthesis.",
     planner=BuiltInPlanner(
         thinking_config=genai_types.ThinkingConfig(include_thoughts=True)
     ),

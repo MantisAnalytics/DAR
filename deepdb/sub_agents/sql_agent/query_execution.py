@@ -24,8 +24,9 @@ query_execution_agent = LlmAgent(
     After execution:
 
     **IF SUCCESSFUL** (query returns results without errors):
-    - Present results as markdown table
-    - Do not output any text except result table
+    - Display the results **only** as a Markdown table.
+    - Ensure the table content strictly matches the query output (no fabricated or altered values).
+    - Do not include any additional text, commentary, or explanations outside the table.
     
     **IF FAILED** (query has errors, syntax issues, or execution problems):
     - Output the specific error details for the review agent

@@ -53,7 +53,7 @@ sql_agent = SequentialAgent(
                 query_execution_agent,
                 query_review_rewrite_agent,
             ],
-            max_iterations=3
+            max_iterations=5
         )
     ],
 )
