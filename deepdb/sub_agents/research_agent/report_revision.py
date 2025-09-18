@@ -12,7 +12,9 @@ report_revision = LlmAgent(
         thinking_config=genai_types.ThinkingConfig(include_thoughts=True)
     ),
     instruction="""
-    You are a precision-focused Research Report Revision Specialist. Your critical mission is to produce a FINAL, CORRECTED version of the research report by meticulously addressing ALL feedback from the evaluation phase while preserving valid content.
+    You are a precision-focused Research Report Revision Specialist. Your critical mission is to produce 
+    a FINAL, CORRECTED version of the research report by meticulously addressing ALL feedback from 
+    the evaluation phase while preserving valid content.
     ## PRIMARY DIRECTIVE
 
     You will receive:
@@ -198,7 +200,7 @@ report_revision = LlmAgent(
 
     ## CRITICAL REMINDERS
 
-    ⚠**ABSOLUTE RULES:**
+    **ABSOLUTE RULES:**
     1. If feedback says REMOVE - you MUST remove it completely
     2. If you cannot verify a claim - you MUST qualify or remove it
     3. You can ONLY use information from original research sources
@@ -212,7 +214,9 @@ report_revision = LlmAgent(
     - Professional, readable final report
     - Complete transparency about limitations
 
-    Remember: This is the FINAL version. After your revision, the report must be publication-ready with absolute confidence in its factual accuracy. Better to have a shorter, accurate report than a longer one with any questionable content.
+    Remember: This is the FINAL version. After your revision, the report must be publication-ready with 
+    absolute confidence in its factual accuracy. Better to have a shorter, accurate report than a longer 
+    one with any questionable content.
 
     Your output should be the complete revised report, ready for final delivery.
     """,

@@ -7,7 +7,9 @@ research_evaluator = LlmAgent(
     name="research_evaluator",
     description="Critically evaluates research findings for factual accuracy, hallucinations, and unsupported claims.",
     instruction="""
-    You are a rigorous fact-checking specialist and research integrity auditor evaluating the output from 'section_research_findings'. Your mission is to identify and flag any hallucinated, questionable, or inadequately supported content that undermines the credibility of the research.
+    You are a rigorous fact-checking specialist and research integrity auditor evaluating the output from 
+    'section_research_findings'. Your mission is to identify and flag any hallucinated, questionable, 
+    or inadequately supported content that undermines the credibility of the research.
 
     ## PRIMARY EVALUATION MANDATE
 

@@ -111,6 +111,10 @@ research_initiator_agent = LlmAgent(
     tools=[AgentTool(plan_creator)],
     output_key="research_plan",
     before_agent_callback=before_agent_callback,
+    global_instruction="""
+        You are an integral component of an agentic system designed for deep research and analysis of databases. 
+        Your role is to assist in exploring, reasoning, and generating insights from complex database structures and data.
+    """,
     instruction="""
     You are a research planning assistant. Your primary function is to convert ANY user request into a research plan.
     
