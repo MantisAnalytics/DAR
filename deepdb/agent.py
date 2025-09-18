@@ -1,11 +1,7 @@
-import logging
-from collections.abc import AsyncGenerator
-
-from google.adk.agents import BaseAgent, LlmAgent, LoopAgent, SequentialAgent
-from google.adk.agents.invocation_context import InvocationContext
-from google.adk.events import Event, EventActions
+from google.adk.agents import LlmAgent, LoopAgent, SequentialAgent
 from google.adk.tools.agent_tool import AgentTool
 
+from deepdb.sub_agents.checkers import EscalationChecker
 from deepdb.sub_agents.research_agent.initial_research import initial_research_agent
 from deepdb.sub_agents.research_agent.plan_creator import plan_creator
 from deepdb.sub_agents.research_agent.report_revision import report_revision
@@ -18,27 +14,6 @@ from deepdb.sub_agents.sql_agent.query_execution import query_execution_agent
 
 from deepdb.config import CONFIG, before_agent_callback
 
-class EscalationChecker(BaseAgent):
-    """Checks research evaluation and escalates to stop the loop if grade is 'pass'."""
-
-    def __init__(self, name: str):
-        super().__init__(name=name)
-
-    async def _run_async_impl(
-        self, ctx: InvocationContext
-    ) -> AsyncGenerator[Event, None]:
-        evaluation_result = ctx.session.state.get("research_evaluation")
-        if evaluation_result and evaluation_result.get("grade") == "pass":
-            logging.info(
-                f"[{self.name}] Research evaluation passed. Escalating to stop loop."
-            )
-            yield Event(author=self.name, actions=EventActions(escalate=True))
-        else:
-            logging.info(
-                f"[{self.name}] Research evaluation failed or not found. Loop will continue."
-            )
-            # Yielding an event without content or actions just lets the flow continue.
-            yield Event(author=self.name)
 
 sql_agent = SequentialAgent(
     name="sql_agent",
