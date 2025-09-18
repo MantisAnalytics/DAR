@@ -115,9 +115,6 @@ docker run -d \
   deepdb
 ```
 
-
-docker run -d --name deepdb-container --env-file C:\Users\VikaS\PycharmProjects\DeepDB\deepdb\.env -p 8000:8000 deepdb
-
 ## The AI Architect Approach 
 This project fully embraces the **AI Architect** tier by utilizing BigQuery's generative AI functions to: 
 - **Generate intelligent queries** using natural language understanding
