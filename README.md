@@ -89,6 +89,8 @@ This project fully embraces the **AI Architect** tier by utilizing BigQuery's ge
 - **Make intelligent decisions** about research directions
 - **Transform findings** into actionable business intelligence
 
+![Agentic System Diagram](./images/deepdb_diagram.svg)
+
 ## Key Features
 ### Agentic Database Exploration 
 - **AI-Driven Schema Discovery**: Agents automatically map database structures and identify relationships using generative AI reasoning 
