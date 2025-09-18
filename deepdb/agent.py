@@ -2,7 +2,7 @@ from google.adk.agents import LlmAgent, LoopAgent, SequentialAgent
 from google.adk.tools.agent_tool import AgentTool
 
 from deepdb.sub_agents.checkers import EscalationChecker
-from deepdb.sub_agents.research_agent.initial_research import initial_research_agent
+from deepdb.sub_agents.research_agent.scratch_research import scratch_research_agent
 from deepdb.sub_agents.research_agent.plan_creator import plan_creator
 from deepdb.sub_agents.research_agent.report_revision import report_revision
 from deepdb.sub_agents.research_agent.report_structure_planner import report_structure_planner
@@ -63,9 +63,9 @@ research_pipeline = SequentialAgent(
     sub_agents=[
         sql_agent,
         report_structure_planner,
-        initial_research_agent,
+        scratch_research_agent,
         LoopAgent(
-            name="iterative_refinement_loop",
+            name="report_refinement_loop",
             max_iterations=CONFIG.max_feedback_iterations,
             sub_agents=[
                 research_evaluator,

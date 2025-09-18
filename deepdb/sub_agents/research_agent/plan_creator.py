@@ -2,14 +2,14 @@ from google.adk.agents import LlmAgent
 from google.adk.planners import BuiltInPlanner
 from google.genai import types as genai_types
 from deepdb.config import CONFIG
-from deepdb.tools.bigquery_tools import bigquery_readonly_toolset
+from deepdb.tools.bigquery_tools import bq_meta_extractor_toolset
 
 plan_creator = LlmAgent(
     model=CONFIG.worker_model,
     name="plan_creator",
     description="Generates or refines a 5-15 line action-oriented research plan for BigQuery table analysis, "
                 "specifying SQL commands and statistical calculations.",
-    tools=[bigquery_readonly_toolset],
+    tools=[bq_meta_extractor_toolset],
     planner=BuiltInPlanner(
         thinking_config=genai_types.ThinkingConfig(include_thoughts=True, thinking_budget=2048),
     ),

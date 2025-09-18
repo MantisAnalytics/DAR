@@ -1,12 +1,12 @@
 from google.adk.agents import LlmAgent
-from deepdb.tools.bigquery_tools import bigquery_readonly_toolset
+from deepdb.tools.bigquery_tools import bq_meta_extractor_toolset
 from deepdb.config import CONFIG
 
 query_generation_agent = LlmAgent(
     name="query_generation_agent",
     model=CONFIG.worker_model,
     description="This agent is responsible for generating bigquery queries in standard sql dialect",
-    tools=[bigquery_readonly_toolset],
+    tools=[bq_meta_extractor_toolset],
     output_key="query_generation_output",
     instruction = """
         You are playing role of BigQuery SQL writer specializing in both traditional SQL and AI-enhanced queries with immediate statistical validation.
