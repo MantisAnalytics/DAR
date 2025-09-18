@@ -81,6 +81,43 @@ relationships, and data patterns through autonomous agent workflows powered by G
         Extension and provide the value in your environment variables to avoid
         creating multiple extensions.
 
+### Project Setup with Docker
+
+### Additional Prerequisites
+
+- Docker installed on your system
+- `.env` file configured with your environment variables
+
+### Environment Variables
+
+Create a `.env` file in the project root directory with your required environment variables.
+You can find example in .env.example.
+
+### Building the Docker Image
+
+Build the Docker image using the following command:
+
+```bash
+docker build -t deepdb .
+```
+
+Replace `deepdb` with your preferred image name.
+
+## Running the Container
+
+Run the container with your `.env` file:
+
+```bash
+docker run -d \
+  --name deepdb-container \
+  --env-file .env \
+  -p 8000:8000 \
+  deepdb
+```
+
+
+docker run -d --name deepdb-container --env-file C:\Users\VikaS\PycharmProjects\DeepDB\deepdb\.env -p 8000:8000 deepdb
+
 ## The AI Architect Approach 
 This project fully embraces the **AI Architect** tier by utilizing BigQuery's generative AI functions to: 
 - **Generate intelligent queries** using natural language understanding

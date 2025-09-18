@@ -12,7 +12,7 @@ COPY . .
 # Upgrade pip to the latest version
 RUN pip install --no-cache-dir --upgrade pip
 # Install uv
-RUN pip install --no-cache-dir uv>=0.7.19
+RUN pip install --no-cache-dir uv>=0.8.0
 
 # Copy only the dependency files to leverage Docker layer caching
 COPY uv.lock pyproject.toml ./
