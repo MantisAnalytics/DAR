@@ -1,37 +1,36 @@
 [project]
 name = "deepdb"
 version = "0.1.0"
-description = "Add your description here"
+description = "The agentic system for BigQuery table research"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "python-dotenv>=1.0.1",
-    "google-adk>=1.8.0",
+    "google-adk>=1.14.1",
     "immutabledict>=4.2.1",
     "sqlglot>=26.10.1",
     "db-dtypes>=1.4.2",
-    "regex>=2024.11.6",
+    "regex>=2025.9.1",
     "tabulate>=0.9.0",
-    "google-cloud-aiplatform[adk,agent-engines]>=1.93.0",
+    "google-cloud-aiplatform[adk,agent-engines]>=1.114.0",
     "absl-py>=2.2.2",
-    "pydantic>=2.11.3",
+    "pydantic>=2.11.9",
     "pandas>=2.3.0",
     "numpy>=2.3.1",
-    "pg8000>=1.31.2",
 ]
 
 
 [project.optional-dependencies]
 dev = [
-    "google-cloud-aiplatform[adk,agent-engines,evaluation]>=1.93.0",
+    "google-cloud-aiplatform[adk,agent-engines,evaluation]>=1.114.0",
     "pytest>=8.3.5",
     "pytest-asyncio>=0.26.0",
-    "google-adk[eval]>=1.8.0",
+    "google-adk[eval]>=1.14.1",
 ]
 
 
 [build-system]
-requires = ["uv_build>=0.7.19,<0.8.0"]
+requires = ["uv_build>=0.8.0,<0.8.18"]
 build-backend = "uv_build"
 
 [tool.uv.build-backend]
