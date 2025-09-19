@@ -2,6 +2,8 @@
 
 An agentic approach to BigQuery table research using Google's ADK (Agent Development Kit).
 
+You can try the app here: [DeepDB](http://34.23.101.191/dev-ui/)
+
 ## BigQuery AI Hackathon
 DeepDB represents a novel approach to database research, leveraging BigQuery's generative AI capabilities to create an
 intelligent, autonomous database exploration system. 
@@ -99,6 +101,13 @@ These permissions are the minimum required for the application to query data fro
         Extension and provide the value in your environment variables to avoid
         creating multiple extensions.
 
+## Running the App
+
+```bash
+cd your-path-to-the-project/DeepDB
+adk web
+```
+
 ### Project Setup with Docker
 
 ### Additional Prerequisites
@@ -157,13 +166,13 @@ This project fully embraces the *AI Architect* tier by utilizing BigQuery's gene
 ### ADK Integration
 - **Agent Orchestration**: Leverage Google ADK for managing multiple research agents with BigQuery AI coordination
 - **Workflow Automation**: Define and execute complex AI-driven research workflows
-- **Scalable AI Processing**: Handle large-scale BigQuery datasets with intelligent resource management 
 
 ## Hackathon Innovation Highlights 
 ### Novel AI Integration
 - **First-of-its-kind** agentic approach using BigQuery's native generative AI functions for research in-depth
 - **No external dependencies beyond Google’s ecosystem** - everything runs within BigQuery using native AI capabilities
 - **Self-improving research** - agents use user's feedback to learn from previous findings and refine future exploration strategies
+- **Data Agnostic**: This solution is data- and schema-agnostic, allowing you to use it immediately without modifying the existing architecture or queries.
 
 ### Business Value Generation
 - **Autonomous insight discovery** reduces manual analysis time by 90% through AI-powered exploration 
