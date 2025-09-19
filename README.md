@@ -12,6 +12,24 @@ relationships, and data patterns through autonomous agent workflows powered by G
 
 ## Setup and Installation
 
+### Service Account Permissions
+
+The application uses a Google Cloud service account with the following roles:
+
+- **BigQuery Connection User**  
+  Allows the service account to use and manage BigQuery connections.  
+
+- **BigQuery Data Viewer**  
+  Grants read-only access to BigQuery datasets, tables, and views.  
+
+- **BigQuery Job User**  
+  Allows the service account to run BigQuery jobs (queries, exports, loads, etc.).  
+
+- **Vertex AI User**  
+  Grants permissions to interact with Vertex AI resources such as models, endpoints, and pipelines.  
+
+These permissions are the minimum required for the application to query data from BigQuery and use Vertex AI for model operations.
+
 ### Prerequisites
 
 *   **Google Cloud Account:** You need a Google Cloud account with BigQuery and Vertex enabled.
@@ -116,7 +134,7 @@ docker run -d \
 ```
 
 ## The AI Architect Approach 
-This project fully embraces the **AI Architect** tier by utilizing BigQuery's generative AI functions to: 
+This project fully embraces the *AI Architect* tier by utilizing BigQuery's generative AI functions to: 
 - **Generate intelligent queries** using natural language understanding
 - **Summarize complex data patterns** across multiple tables
 - **Create structured insights** from unstructured exploration results
