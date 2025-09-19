@@ -1,6 +1,6 @@
 from google.adk.code_executors import VertexAiCodeExecutor
 from google.adk.agents import Agent
-from deepdb.config import CONFIG
+from dar.config import CONFIG
 
 code_execution_agent = Agent(
     model=CONFIG.worker_model,

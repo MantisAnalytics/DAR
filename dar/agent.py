@@ -6,17 +6,16 @@ from google.adk.agents.invocation_context import InvocationContext
 from google.adk.events import Event, EventActions
 from google.adk.tools.agent_tool import AgentTool
 
-from deepdb.sub_agents.research_agent.initial_research import initial_research_agent
-from deepdb.sub_agents.research_agent.plan_creator import plan_creator
-from deepdb.sub_agents.research_agent.report_revision import report_revision
-from deepdb.sub_agents.research_agent.report_structure_planner import report_structure_planner
-from deepdb.sub_agents.research_agent.research_evaluator import research_evaluator
-from deepdb.sub_agents.sql_agent.query_understanding import query_understanding_agent
-from deepdb.sub_agents.sql_agent.query_generation import query_generation_agent
-from deepdb.sub_agents.sql_agent.query_review_rewrite import query_review_rewrite_agent
-from deepdb.sub_agents.sql_agent.query_execution import query_execution_agent
-
-from deepdb.config import CONFIG, before_agent_callback
+from dar.sub_agents.research_agent.initial_research import initial_research_agent
+from dar.sub_agents.research_agent.plan_creator import plan_creator
+from dar.sub_agents.research_agent.report_revision import report_revision
+from dar.sub_agents.research_agent.report_structure_planner import report_structure_planner
+from dar.sub_agents.research_agent.research_evaluator import research_evaluator
+from dar.sub_agents.sql_agent.query_understanding import query_understanding_agent
+from dar.sub_agents.sql_agent.query_generation import query_generation_agent
+from dar.sub_agents.sql_agent.query_review_rewrite import query_review_rewrite_agent
+from dar.sub_agents.sql_agent.query_execution import query_execution_agent
+from dar.config import CONFIG, before_agent_callback
 
 class EscalationChecker(BaseAgent):
     """Checks research evaluation and escalates to stop the loop if grade is 'pass'."""

@@ -1,8 +1,8 @@
 from google.adk.agents import LlmAgent
 from google.adk.planners import BuiltInPlanner
 from google.genai import types as genai_types
-from deepdb.config import CONFIG
-from deepdb.tools.bigquery_tools import bigquery_toolset
+from dar.config import CONFIG
+from dar.tools.bigquery_tools import bigquery_toolset
 
 plan_creator = LlmAgent(
     model=CONFIG.worker_model,

@@ -1,15 +1,15 @@
-# DeepDB
+# DAR: Data Agnostic Researcher
 
 An agentic approach to BigQuery table research using Google's ADK (Agent Development Kit).
 
-You can try the app here: [DeepDB](http://34.23.101.191/dev-ui/)
+You can try the app here: [DAR](http://34.23.101.191/dev-ui/)
 
 ## BigQuery AI Hackathon
-DeepDB represents a novel approach to database research, leveraging BigQuery's generative AI capabilities to create an
+DAR represents a novel approach to database research, leveraging BigQuery's generative AI capabilities to create an
 intelligent, autonomous database exploration system. 
 Built specifically for the [BigQuery AI Hackathon](https://www.kaggle.com/competitions/bigquery-ai-hackathon/overview), 
 this project demonstrates how AI can architect intelligent business applications directly within your data warehouse. 
-Drawing inspiration from deep research techniques, DeepDB automates the process of understanding database schemas,
+Drawing inspiration from deep research techniques, DAR automates the process of understanding database schemas,
 relationships, and data patterns through autonomous agent workflows powered by Google's Agent Development Kit (ADK).
 
 ## Setup and Installation
@@ -150,7 +150,7 @@ This project fully embraces the *AI Architect* tier by utilizing BigQuery's gene
 - **Make intelligent decisions** about research directions
 - **Transform findings** into actionable business intelligence
 
-![Agentic System Diagram](./images/deepdb_diagram.svg)
+![Agentic System Diagram](./images/dar_diagram.svg)
 
 ## Key Features
 ### Agentic Database Exploration 

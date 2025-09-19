@@ -1,5 +1,5 @@
 from google.adk.agents import LlmAgent
-from deepdb.config import CONFIG
+from dar.config import CONFIG
 
 query_review_rewrite_agent = LlmAgent(
     name="query_review_agent",

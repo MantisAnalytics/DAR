@@ -1,5 +1,5 @@
 from google.adk.agents import LlmAgent
-from deepdb.config import CONFIG
+from dar.config import CONFIG
 
 report_structure_planner = LlmAgent(
     model=CONFIG.worker_model,

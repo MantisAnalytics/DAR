@@ -1,5 +1,5 @@
 [project]
-name = "deepdb"
+name = "dar"
 version = "0.1.0"
 description = "The agentic system for BigQuery table research"
 readme = "README.md"
@@ -34,7 +34,7 @@ requires = ["uv_build>=0.8.0,<0.8.18"]
 build-backend = "uv_build"
 
 [tool.uv.build-backend]
-module-name = "deepdb"
+module-name = "dar"
 module-root = ""
 
 [tool.pytest.ini_options]

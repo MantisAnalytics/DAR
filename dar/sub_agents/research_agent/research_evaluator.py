@@ -1,6 +1,6 @@
 from google.adk.agents import LlmAgent
-from deepdb.config import CONFIG
-from deepdb.schema import Feedback
+from dar.config import CONFIG
+from dar.schema import Feedback
 
 research_evaluator = LlmAgent(
     model=CONFIG.critic_model,
