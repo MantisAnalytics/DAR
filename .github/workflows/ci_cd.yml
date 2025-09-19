@@ -1,0 +1,73 @@
+name: Build & Deploy to GKE
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  PROJECT_ID: ${{ secrets.GCP_PROJECT_ID_NON_PROD }}
+  IMAGE_NAME: deepdb
+  REGION: us-east1
+  CLUSTER_NAME: mantisanalytics-cluster
+  CLUSTER_ZONE: us-east1
+  DEPLOYMENT_NAME: deepdb
+  NAMESPACE: default
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY_NON_PROD }}
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+
+      - name: Install gke-gcloud-auth-plugin
+        run: |
+          gcloud components install gke-gcloud-auth-plugin
+          gcloud components install kubectl
+          gcloud components install beta
+          echo "${{ secrets.GCP_SA_KEY_NON_PROD }}" > service-account-key.json
+          gcloud container clusters get-credentials $CLUSTER_NAME --zone $CLUSTER_ZONE --project ${{ secrets.GCP_PROJECT_ID_NON_PROD }}
+
+      - name: 'Use gcloud CLI'
+        run: 'gcloud info'
+
+      - name: Configure Docker
+        run: |
+          gcloud auth configure-docker
+
+      - name: Set image tag
+        id: vars
+        run: |
+          BRANCH_NAME=${GITHUB_REF##*/}
+          SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-5)
+          echo "TAG=${BRANCH_NAME}-${SHORT_SHA}" >> $GITHUB_ENV
+
+      - name: Build and Push Docker image
+        run: |
+          docker buildx build \
+            --platform linux/amd64 \
+            -t gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.TAG }} \
+            --push .
+
+      - name: Update Deployment image
+        run: |
+          kubectl set image deployment/${{ env.DEPLOYMENT_NAME }} \
+            ${{ env.IMAGE_NAME }}=gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.TAG }} \
+            -n ${{ env.NAMESPACE }}
+
+      - name: Wait for rollout
+        run: |
+          kubectl rollout status deployment/${{ env.DEPLOYMENT_NAME }} -n ${{ env.NAMESPACE }}
