@@ -13,7 +13,7 @@ env:
   REGION: us-east1
   CLUSTER_NAME: mantisanalytics-cluster
   CLUSTER_ZONE: us-east1
-  DEPLOYMENT_NAME: sa-service-deployment
+  DEPLOYMENT_NAME: deepdb
   NAMESPACE: default
 
 permissions:
