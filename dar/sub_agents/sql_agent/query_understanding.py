@@ -1,13 +1,13 @@
 from google.adk.agents import LlmAgent
 from dar.config import CONFIG
-from dar.tools.bigquery_tools import bigquery_readonly_toolset
+from dar.tools.bigquery_tools import bq_meta_extractor_toolset
 
 query_understanding_agent = LlmAgent(
     name="query_understanding_agent",
     model=CONFIG.critic_model,
     description = "This agent is responsible for understanding the intent of the user question and identifying "
                   "tables/columns involved to answer the query",
-    tools=[bigquery_readonly_toolset],
+    tools=[bq_meta_extractor_toolset],
     output_key="query_understanding_output",
     instruction="""
         You are a data analyst who analyzes research plans to identify data requirements and query strategies.

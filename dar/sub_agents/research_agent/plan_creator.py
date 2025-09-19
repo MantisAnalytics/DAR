@@ -2,7 +2,7 @@ from google.adk.agents import LlmAgent
 from google.adk.planners import BuiltInPlanner
 from google.genai import types as genai_types
 from dar.config import CONFIG
-from dar.tools.bigquery_tools import bigquery_toolset
+from dar.tools.bigquery_tools import bq_executor_toolset
 
 plan_creator = LlmAgent(
     model=CONFIG.worker_model,
@@ -130,7 +130,7 @@ plan_creator = LlmAgent(
     Your job is planning the analysis approach that combines traditional SQL analytics 
     with AI-powered insights generation, ensuring every AI operation is followed by rigorous analytical validation.
     """,
-    tools=[bigquery_toolset],
+    tools=[bq_executor_toolset],
     planner=BuiltInPlanner(
         thinking_config=genai_types.ThinkingConfig(include_thoughts=True, thinking_budget=2048),
     ),

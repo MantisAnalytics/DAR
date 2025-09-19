@@ -44,8 +44,8 @@ These permissions are the minimum required for the application to query data fro
 1.  **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/MantisAnalytics/DeepDB
-    cd DeepDB
+    git clone https://github.com/MantisAnalytics/DAR
+    cd DAR
     ```
 
 2.  **Install Dependencies with uv:**
@@ -58,7 +58,7 @@ These permissions are the minimum required for the application to query data fro
     dependencies into a virtual environment managed by uv. On the first run,
     this command will also create a new virtual environment. By default, the
     virtual environment will be created in a `.venv` directory inside
-    `DeepDB`. If you already have a virtual environment created, or you want to use a different location, you can use
+    `DAR`. If you already have a virtual environment created, or you want to use a different location, you can use
     the `--active` flag for `uv` commands, and/or change the
     `UV_PROJECT_ENVIRONMENT` environment variable. See
     [How to customize uv's virtual environment location](https://pydevtools.com/handbook/how-to/how-to-customize-uvs-virtual-environment-location/)
@@ -104,7 +104,7 @@ These permissions are the minimum required for the application to query data fro
 ## Running the App
 
 ```bash
-cd your-path-to-the-project/DeepDB
+cd your-path-to-the-project/DAR
 adk web
 ```
 
@@ -125,10 +125,10 @@ You can find example in .env.example.
 Build the Docker image using the following command:
 
 ```bash
-docker build -t deepdb .
+docker build -t dar .
 ```
 
-Replace `deepdb` with your preferred image name.
+Replace `dar` with your preferred image name.
 
 ## Running the Container
 
@@ -136,10 +136,10 @@ Run the container with your `.env` file:
 
 ```bash
 docker run -d \
-  --name deepdb-container \
+  --name dar-container \
   --env-file .env \
   -p 8000:8000 \
-  deepdb
+  dar
 ```
 
 ## The AI Architect Approach 
