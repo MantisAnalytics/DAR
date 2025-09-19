@@ -1,13 +1,13 @@
 from google.adk.agents import LlmAgent
 from deepdb.config import CONFIG
-from deepdb.tools.bigquery_tools import bq_meta_extractor_toolset
+from deepdb.tools.bigquery_tools import bigquery_readonly_toolset
 
 query_understanding_agent = LlmAgent(
     name="query_understanding_agent",
     model=CONFIG.critic_model,
     description = "This agent is responsible for understanding the intent of the user question and identifying "
                   "tables/columns involved to answer the query",
-    tools=[bq_meta_extractor_toolset],
+    tools=[bigquery_readonly_toolset],
     output_key="query_understanding_output",
     instruction="""
         You are a data analyst who analyzes research plans to identify data requirements and query strategies.
