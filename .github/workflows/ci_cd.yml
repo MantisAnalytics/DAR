@@ -34,6 +34,14 @@ jobs:
       - name: 'Set up Cloud SDK'
         uses: 'google-github-actions/setup-gcloud@v2'
 
+      - name: Install gke-gcloud-auth-plugin
+        run: |
+          gcloud components install gke-gcloud-auth-plugin
+          gcloud components install kubectl
+          gcloud components install beta
+          echo "${{ secrets.GCP_SA_KEY_NON_PROD }}" > service-account-key.json
+          gcloud container clusters get-credentials $GKE_CLUSTER_NAME --zone $GKE_CLUSTER_ZONE --project ${{ secrets.GCP_PROJECT_ID_NON_PROD }}
+
       - name: 'Use gcloud CLI'
         run: 'gcloud info'
 
@@ -54,12 +62,6 @@ jobs:
             --platform linux/amd64 \
             -t gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ env.TAG }} \
             --push .
-
-      - name: Get GKE credentials
-        run: |
-          gcloud container clusters get-credentials \
-            ${{ env.CLUSTER_NAME }} \
-            --region ${{ env.REGION }}
 
       - name: Update Deployment image
         run: |
