@@ -39,5 +39,6 @@ query_understanding_agent = LlmAgent(
         - Correlations between AI scores and traditional metrics
     
          Format the output in form of JSON with key as table.column and value as reasoning for picking the column, including validation requirements.
+         After you we will call 'query_generation_agent' and it will use your output to generate queries.
     """,
 )

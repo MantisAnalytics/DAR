@@ -16,8 +16,7 @@ from dar.config import CONFIG, before_agent_callback
 
 sql_agent = SequentialAgent(
     name="sql_agent",
-    description="An orchestrator agent that coordinates the nl2sql workflow by delegating tasks to specialized "
-                "sub-agents.",
+    description="Executes a sequence of query understanding, query generation, and query refinement.",
     sub_agents=[
         query_understanding_agent,
         query_generation_agent,
@@ -27,7 +26,7 @@ sql_agent = SequentialAgent(
                 query_execution_agent,
                 query_review_rewrite_agent,
             ],
-            max_iterations=5
+            max_iterations=7
         )
     ],
 )
@@ -57,8 +56,8 @@ report_composer = LlmAgent(
 
 research_pipeline = SequentialAgent(
     name="research_pipeline",
-    description="Executes a pre-approved research plan. It performs iterative research, evaluation, and composes a "
-                "final, cited report.",
+    description="Executes a pre-approved research plan. It performs iterative research through query writing and"
+                " refinement, evaluation, and composes a final, cited report.",
     sub_agents=[
         sql_agent,
         report_structure_planner,

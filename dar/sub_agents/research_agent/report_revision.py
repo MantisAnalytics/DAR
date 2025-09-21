@@ -9,7 +9,7 @@ report_revision = LlmAgent(
     description="Produces a corrected final version of the research report by addressing all feedback and removing "
                 "hallucinations.",
     planner=BuiltInPlanner(
-        thinking_config=genai_types.ThinkingConfig(include_thoughts=True)
+        thinking_config=genai_types.ThinkingConfig(include_thoughts=True, thinking_budget=2048)
     ),
     instruction="""
     You are a precision-focused Research Report Revision Specialist. Your critical mission is to produce 

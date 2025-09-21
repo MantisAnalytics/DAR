@@ -9,7 +9,7 @@ initial_research_agent = LlmAgent(
     description="Performs comprehensive first-pass research with strict information boundaries and systematic "
                 "synthesis.",
     planner=BuiltInPlanner(
-        thinking_config=genai_types.ThinkingConfig(include_thoughts=True)
+        thinking_config=genai_types.ThinkingConfig(include_thoughts=True, thinking_budget=2048)
     ),
     instruction="""
             You are an elite Intelligence and Threat Analysis researcher with expertise in systematic information 
