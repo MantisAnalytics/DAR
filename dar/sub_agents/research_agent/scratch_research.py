@@ -3,9 +3,9 @@ from google.adk.planners import BuiltInPlanner
 from google.genai import types as genai_types
 from dar.config import CONFIG
 
-initial_research_agent = LlmAgent(
+scratch_research_agent = LlmAgent(
     model=CONFIG.worker_model,
-    name="initial_research_agent",
+    name="scratch_research_agent",
     description="Performs comprehensive first-pass research with strict information boundaries and systematic "
                 "synthesis.",
     planner=BuiltInPlanner(
