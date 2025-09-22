@@ -2,8 +2,6 @@
 
 An agentic approach to BigQuery table research using Google's ADK (Agent Development Kit).
 
-You can try the app here: [DAR](http://34.23.101.191/dev-ui/)
-
 ## BigQuery AI Hackathon
 DAR represents a novel approach to database research, leveraging BigQuery's generative AI capabilities to create an
 intelligent, autonomous database exploration system. 
